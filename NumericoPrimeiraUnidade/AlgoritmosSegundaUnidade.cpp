@@ -379,7 +379,7 @@ void DecomposiçãoDeCholesky() {
 	int ordem, maxInt = 0;
 	cout << "Digite a ordem da matriz: ";
 	cin >> ordem;
-
+	double *y = new double[ordem];
 	//criar vetor de b
 	double *b = new double[ordem];
 	//matriz de a 
@@ -416,7 +416,7 @@ void DecomposiçãoDeCholesky() {
 		for (int j = 0; j < ordem; j++) {
 			g[n][j] = 0;
 		}
-	}
+	}\
 	bool elementoNulo = false;
 	for (int i = 0; i < ordem - 1; i++) {
 		if (a[i][i] == 0) {
@@ -436,25 +436,26 @@ void DecomposiçãoDeCholesky() {
 			int k;
 			for (k = 0; k < ordem; k++) {
 				double somaG = 0;
-				for (int j = 0; j < k-1; j++) {
+				for (int j = 0; j < k; j++) {
 					somaG += pow(g[k][j], 2);
 				}
+				cout << somaG << endl;
 				double r = a[k][k] - somaG;
 				if (r <= 0)
-					//break;
+					break;
 
 				g[k][k] = sqrt(r);
-				cout << "G= "<<sqrt(r)<<" "<<g[k][k] << endl;
+				/*cout << "G= "<<sqrt(r)<<" "<<g[k][k] << endl;
 				for (int i = 0; i < ordem; i++) {
 					for (int j = 0; j < ordem; j++) {
 						cout << g[i][j] << " ";
 					}
 					cout << endl;
 				}
-				cout << endl << endl;
-				for (int i = k+1; i <= k; i++) {
+				cout << endl << endl;*/
+				for (int i = k+1; i < ordem; i++) {
 					somaG = 0;
-					for (int j = 0; j < k - 1; j++) {
+					for (int j = 0; j < k; j++) {
 						somaG  += g[i][j] * g[k][j];
 					}
 					cout << (a[i][k] - somaG) / g[k][k]<<endl;
@@ -465,11 +466,52 @@ void DecomposiçãoDeCholesky() {
 			cout << "G=" << endl;
 			for (int i = 0; i < ordem; i++) {
 				for (int j = 0; j < ordem; j++) {
-					cout << a[i][j] << " ";
+					cout << g[i][j] << " ";
+				}
+				cout << endl;
+			}
+			cout << "Gt=" << endl;
+			for (int i = 0; i < ordem; i++) {
+				for (int j = 0; j < ordem; j++) {
+					cout << g[j][i] << " ";
 				}
 				cout << endl;
 			}
 			cout << endl << endl;
+			//criar vetor de y
+			double soma = 0;
+			y[0] = b[0]/g[0][0];
+			//calcular valores de y; Gy=b
+			for (int k = 1; k < ordem; k++) {
+				double soma = 0;
+				for (int i = 0; i < k; i++) {
+					soma = soma + (g[k][i] * y[i]);
+				}
+				y[k] = (b[k] - soma) / g[k][k];
+			}
+
+			//criar vetor de x
+			double *x = new double[ordem];
+			soma = 0;
+			x[ordem - 1] = y[ordem - 1] / g[ordem - 1][ordem - 1];
+
+			//calcular valores de x, Gtx=y
+			for (int k = ordem - 2; k >= 0; k--) {
+				for (int i = k + 1; i < ordem; i++) {
+					soma += g[i][k] * x[i];
+				}
+				x[k] = (y[k] - soma) / g[k][k];
+				soma = 0;
+			}
+
+
+			cout << "Solucoes: " << endl;
+			//imprimir x
+			for (n = 0; n < ordem; n++) {
+				cout << "x" << (n + 1) << ": " << x[n] << endl;
+			}
+			delete x;
+			cout << endl;
 		}
 
 	}
