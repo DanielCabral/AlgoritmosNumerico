@@ -5,117 +5,45 @@
 
 //prototipos das funções
 using namespace std;
-void conversoesMenu();
-void zeroDeFuncoesMenu();
 void sistemasLinearesMenu();
-void normas();
 void metodoDeJacobi();
 void metodoDeGaussSeidel();
-void DecomposiçãoDeCholesky();
+void DecomposicaoDeCholesky();
 void metodoFatoracaoLU();
 void DecomposicaoLDLt();
 int main() {
-	int escolha = -1;
-	while (escolha != 0) {
-		cout << "1- Conversao" << endl;
-		cout << "2- Zero de funcoes" << endl;
-		cout << "3- Sistemas lineares" << endl;
-		cout << "0- Sair" << endl;
-		cout << "digite uma opcao: ";
-		cin >> escolha;
-		switch (escolha) {
-		case 1:
-			conversoesMenu();
-			break;
-		case 2:
-			zeroDeFuncoesMenu();
-			break;
-		case 3:
-			sistemasLinearesMenu();
-			break;
-		default:
-			break;
-		}
-	}
+	sistemasLinearesMenu();
 	system("pause");
 	return 0;
 }
 
-void conversoesMenu() {
-	int opt = -1;
-	while (opt != 0) {
-
-		cout << "Conversor De Bases Numericas" << endl << endl;
-		cout << "1 - Binário     ->  Decimal      " << endl;
-		cout << "2 - Decimal     ->  Binário      " << endl;
-		cout << "3 - Octal       ->  Decimal      " << endl;
-		cout << "4 - Decimal     ->  Octal        " << endl;
-		cout << "5 - Hexadecimal ->  Decimal      " << endl;
-		cout << "6 - Decimal     ->  Hexadecimal " << endl;
-		cout << "0 - voltar" << endl;
-		cout << "digite uma opcao: ";
-		cin >> opt;
-
-		switch (opt) {
-		case 0:
-			break;
-		default:
-			printf("OPCAO NAO PERMITIDA!\nTENTE NOVAMENTE\n");
-			break;
-		}
-	}
-}
-
-void zeroDeFuncoesMenu() {
-	int escolha = -1;
-	while (escolha != 0) {
-		cout << endl << "1- Metodo da biseccao" << endl;
-		cout << "2- Posicao Falsa" << endl;
-		cout << "3- Ponto Fixo" << endl;
-		cout << "4- Secante" << endl;
-		cout << "5- Newton" << endl;
-		cout << "0- Voltar" << endl;
-		cout << "digite uma opcao: ";
-		cin >> escolha;
-		switch (escolha) {
-		case 0:
-			break;
-		default:
-			break;
-		}
-	}
-}
 
 void sistemasLinearesMenu() {
 	int escolha = -1;
 	while (escolha != 0) {
-		cout << "1- Calculo de norma matricial" << endl;
-		cout << "2- Sistema linear triangular superior" << endl;
-		cout << "3- Sistema linear triangular inferior" << endl;
-		cout << "4- Sistema linear por eliminação gaussiana" << endl;
-		cout << "5- Metodo de Jacobi" << endl;
-		cout << "6- Metodo de Gauss Seidel" << endl;
-		cout << "7- Fatoracao LU" << endl;
-		cout << "8- Decomposicao LDLt" << endl;
-		cout << "9- Decomposicao de Cholesky" << endl;
+		cout << "1- Metodo de Jacobi" << endl;
+		cout << "2- Metodo de Gauss Seidel" << endl;
+		cout << "3- Fatoracao LU" << endl;
+		cout << "4- Decomposicao LDLt" << endl;
+		cout << "5- Decomposicao de Cholesky" << endl;
 		cout << "0- Voltar" << endl;
 		cout << "digite uma opcao: ";
 		cin >> escolha;
 		switch (escolha) {
-		case 5: 
+		case 1: 
 			metodoDeJacobi();
 			break;
-		case 6:
+		case 2:
 			metodoDeGaussSeidel();
 			break;
-		case 7:
+		case 3:
 			metodoFatoracaoLU();
 			break;
-		case 8:
+		case 4:
 			DecomposicaoLDLt();
 			break;
-		case 9:
-			DecomposiçãoDeCholesky();
+		case 5:
+			DecomposicaoDeCholesky();
 			break;
 		default:
 			break;
@@ -368,11 +296,12 @@ void DecomposicaoLDLt() {
 				}
 				cout << endl;
 			}
+
 		}
 	}
 }
 
-void DecomposiçãoDeCholesky() {
+void DecomposicaoDeCholesky() {
 	
 	cout.precision(6);
 	cout << fixed;

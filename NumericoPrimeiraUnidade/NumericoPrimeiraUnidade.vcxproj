@@ -119,7 +119,7 @@
     <ClInclude Include="sistemasLineares.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AlgoritmosSegundaUnidade.cpp" />
+    <ClCompile Include="AlgoritmosTerceiraUnidade.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

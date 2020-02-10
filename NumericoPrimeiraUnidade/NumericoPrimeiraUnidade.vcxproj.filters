@@ -23,7 +23,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AlgoritmosSegundaUnidade.cpp">
+    <ClCompile Include="AlgoritmosTerceiraUnidade.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
   </ItemGroup>
